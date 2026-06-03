@@ -1,15 +1,7 @@
-// Animated line-art glyph per vertical. Pure SVG + CSS (server component).
-// Placement/size comes from the parent class (.icard .iglyph or .glyph-hero).
+// Animated white line-art glyph per vertical — ported verbatim from the
+// original index.html (.igfx). Pure SVG + CSS, server-rendered.
 
 type Props = { slug: string; className?: string };
-
-function Svg({ children }: { children: React.ReactNode }) {
-  return (
-    <svg viewBox="0 0 120 120" role="img" aria-hidden>
-      {children}
-    </svg>
-  );
-}
 
 export default function IndustryGlyph({ slug, className = '' }: Props) {
   const inner = (() => {
@@ -17,81 +9,68 @@ export default function IndustryGlyph({ slug, className = '' }: Props) {
       case 'railways':
         return (
           <>
-            {/* rails + ties */}
-            <path d="M8 80H112M8 96H112" />
-            <path d="M24 80V96M44 80V96M64 80V96M84 80V96M104 80V96" strokeWidth={1.4} opacity={0.5} />
-            {/* signal mast */}
-            <path d="M96 80V40" />
-            <circle className="acc g-blink" cx={96} cy={34} r={5} />
-            {/* running train dot */}
-            <circle className="accf g-runx" cx={60} cy={88} r={5} />
+            <line x1="12" y1="50" x2="108" y2="50" /><line x1="12" y1="74" x2="108" y2="74" />
+            <line x1="24" y1="50" x2="24" y2="74" /><line x1="44" y1="50" x2="44" y2="74" /><line x1="64" y1="50" x2="64" y2="74" /><line x1="84" y1="50" x2="84" y2="74" /><line x1="104" y1="50" x2="104" y2="74" />
+            <circle className="blinkg" cx="98" cy="32" r="5" />
+            <circle className="rail-dot" cx="16" cy="50" r="4" fill="#fff" stroke="none" />
           </>
         );
       case 'telecom':
         return (
           <>
-            {/* tower */}
-            <path d="M60 96L50 54M60 96L70 54M53 74H67M51 64H69" />
-            <path d="M40 96H80" />
-            <circle className="accf" cx={60} cy={48} r={3.5} />
-            {/* ping rings */}
-            <circle className="acc g-ping" cx={60} cy={48} r={6} />
-            <circle className="acc g-ping d2" cx={60} cy={48} r={6} />
-            <circle className="acc g-ping d3" cx={60} cy={48} r={6} />
+            <circle className="ring r1" cx="60" cy="62" r="14" /><circle className="ring r2" cx="60" cy="62" r="14" /><circle className="ring r3" cx="60" cy="62" r="14" />
+            <circle cx="60" cy="62" r="5" fill="#fff" stroke="none" />
+            <path d="M60 62 V30" /><path d="M52 30 h16" />
           </>
         );
       case 'bfsi':
         return (
           <>
-            <path d="M60 16L98 30V58C98 84 80 100 60 106C40 100 22 84 22 58V30L60 16Z" />
-            <path className="acc g-draw" d="M42 60L55 73L80 44" />
+            <path d="M60 20 L92 32 V62 C92 84 60 100 60 100 C60 100 28 84 28 62 V32 Z" />
+            <path className="check" d="M44 60 l11 11 l22 -24" />
           </>
         );
       case 'public-sector':
         return (
           <>
-            <path d="M28 46L60 26L92 46" />
-            <path d="M24 92H96" />
-            <path d="M30 50V88M44 50V88M60 50V88M76 50V88M90 50V88" />
-            <path d="M26 50H94" strokeWidth={1.6} />
-            <circle className="accf g-blink" cx={60} cy={32} r={3.5} />
+            <path d="M30 54 L60 36 L90 54" /><line x1="26" y1="92" x2="94" y2="92" />
+            <line x1="38" y1="54" x2="38" y2="86" /><line x1="52" y1="54" x2="52" y2="86" /><line x1="68" y1="54" x2="68" y2="86" /><line x1="82" y1="54" x2="82" y2="86" />
+            <circle className="blinkg b1" cx="60" cy="24" r="4" /><circle className="blinkg b2" cx="40" cy="30" r="3" /><circle className="blinkg b3" cx="80" cy="30" r="3" />
           </>
         );
       case 'real-estate':
         return (
           <>
-            <path d="M44 38H88V100H44Z" />
-            <path d="M20 64H44V100H20Z" />
-            <path d="M44 38L66 26L88 38" />
-            <rect className="accf g-lit" x={52} y={50} width={8} height={8} />
-            <rect className="accf g-lit d2" x={72} y={50} width={8} height={8} />
-            <rect className="accf g-lit d3" x={52} y={68} width={8} height={8} />
-            <rect className="accf g-lit d4" x={72} y={68} width={8} height={8} />
-            <rect className="accf g-lit d5" x={28} y={74} width={8} height={8} />
+            <rect x="34" y="30" width="52" height="64" rx="2" />
+            <rect className="win w1" x="42" y="40" width="11" height="11" /><rect className="win w2" x="67" y="40" width="11" height="11" />
+            <rect className="win w3" x="42" y="58" width="11" height="11" /><rect className="win w4" x="67" y="58" width="11" height="11" />
+            <rect className="win w5" x="42" y="76" width="11" height="11" /><rect className="win w6" x="67" y="76" width="11" height="11" />
           </>
         );
       case 'oil-gas':
         return (
           <>
-            <path d="M24 86A36 36 0 0 1 96 86" />
-            <path d="M30 80L36 76M60 50V58M90 80L84 76" strokeWidth={1.6} opacity={0.7} />
-            <line className="acc g-sweep" x1={60} y1={86} x2={60} y2={54} />
-            <circle className="accf" cx={60} cy={86} r={5} />
-            <path d="M24 94H96" strokeWidth={1.6} />
+            <path d="M26 80 A34 34 0 0 1 94 80" />
+            <line x1="30" y1="68" x2="34" y2="70" /><line x1="60" y1="46" x2="60" y2="50" /><line x1="90" y1="68" x2="86" y2="70" />
+            <line className="needle" x1="60" y1="80" x2="60" y2="50" strokeWidth="3" />
+            <circle cx="60" cy="80" r="4" fill="#fff" stroke="none" />
           </>
         );
       case 'energy-utilities':
         return (
           <>
-            <path className="acc g-flow" d="M14 78Q32 58 50 78T86 78T122 78" />
-            <path d="M14 94H106" strokeWidth={1.6} opacity={0.6} />
-            <polygon className="accf g-blink" points="64,28 50,60 60,60 54,86 78,50 66,50 74,28" />
+            <path className="wave" d="M14 78 Q29 56 44 78 T74 78 T104 78" />
+            <path className="bolt" d="M64 26 L48 60 H60 L54 92 L78 52 H64 L72 26 Z" />
           </>
         );
       default:
-        return <circle className="acc g-spin" cx={60} cy={60} r={36} strokeDasharray="40 14" />;
+        return <circle cx="60" cy="60" r="34" strokeDasharray="40 14" />;
     }
   })();
 
-  return <span className={`iglyph ${className}`}>{<Svg>{inner}</Svg>}</span>;
+  return (
+    <div className={`igfx ${className}`.trim()}>
+      <svg viewBox="0 0 120 120" role="img" aria-hidden>{inner}</svg>
+    </div>
+  );
 }
