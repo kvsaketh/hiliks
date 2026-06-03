@@ -15,8 +15,8 @@
   --space-head:14px; --space-lead:16px;
   --shadow-1:0 12px 34px -20px rgba(0,0,0,.65); --shadow-2:0 26px 64px -32px rgba(0,0,0,.75);
   --dur-1:.25s; --dur-2:.45s; --dur-3:.9s;
-  --font-sans:var(--font-sora),'Sora',system-ui,sans-serif;
-  --font-mono:var(--font-mono-plex),'IBM Plex Mono',ui-monospace,monospace;
+  --font-sans:var(--font-sora,'Sora'),system-ui,sans-serif;
+  --font-mono:var(--font-mono-plex,'IBM Plex Mono'),ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}

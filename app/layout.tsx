@@ -43,8 +43,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${sora.variable} ${plex.variable}`}>
+    <html lang="en" className={`${sora.variable} ${plex.variable}`}>
+      <body>
         <div className="scan" aria-hidden />
         <ScrollProgress />
         <Cursor />
